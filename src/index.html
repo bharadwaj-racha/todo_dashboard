@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <style>
+       /* General reset and box-sizing */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* General styles */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .col-md-7, .col-md-6, .col-md-5, .col-sm-12 {
+            padding-right: 15px;
+            padding-left: 15px;
+            padding: 20px;
+        }
+
+        /* Desktop and larger screens */
+        @media (min-width: 768px) {
+            .col-md-7 {
+                flex: 0 0 58.3333%; /* 7/12 = 58.3333% */
+                max-width: 58.3333%;
+            }
+
+            .col-md-6 {
+                flex: 0 0 50%; /* 6/12 = 50% */
+                max-width: 50%;
+            }
+
+            .col-md-5 {
+                flex: 0 0 41.6667%; /* 5/12 = 41.6667% */
+                max-width: 41.6667%;
+            }
+            .space{
+                margin: 60px;
+            }
+            .space2{
+                padding: 50px;
+            }
+        }
+
+        /* Mobile screens */
+        @media (max-width: 767px) {
+            .col-md-7, .col-md-6, .col-md-5, .col-sm-12 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .space{
+                margin: 30px;
+            }
+            .space2{
+                padding: 25px !important;
+            }
+            .curved-section {
+              height: 800px !important;
+            }
+        }
+
+        .secondText {
+                font-size: 18px;
+                line-height: 25px;
+                color: white;
+            }
+            .firstText {
+                font-size: 20px;
+                line-height: 20px;
+                color: white;
+                font-weight: 700;
+            }
+            .cardFirstText {
+                font-family: Inter;color: white;
+                font-size: 24px;
+                font-weight: 800;
+                line-height: 36px;
+                text-align: left;
+            }
+            .cardSecondText{
+                font-family: Inter;color: white;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 26px;
+                    text-align: left;
+            }
+            .card:hover .overlay {
+                background-color: #7f61cd !important; /* Red with 50% opacity */
+                opacity: 0.5;
+            }
+            form {
+            display: flex;
+            margin: 60px;
+            padding: 50px;
+            flex-direction: column;
+            background-color: #f7f7f7;
+            position: relative;
+            border-top-right-radius: 0; /* Ensure no radius on top-right corner */
+            z-index: 0;
+        }
+
+        /* Create the right-angle triangle */
+        form::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 0;
+                height: 0;
+                border-top: 50px solid transparent; /* Keeps the top border transparent */
+                border-left: 50px solid #532ac7; /* Makes the left border transparent */
+                z-index: -1;
+                rotate: 180deg; /* Rotates the triangle, if needed */
+            }
+            input {
+                padding: 4px 3px;
+                margin-bottom: 7px;
+                border-radius: 6px;
+            }
+                select {
+                    padding: 4px 3px;
+                    margin-bottom: 7px;
+                    border-radius: 6px;
+                }
+                textarea{
+                    border-radius: 6px;
+                    padding: 4px 3px;
+
+                }
+                label{
+                    font-family: Inter;margin-bottom: 5px;margin-top: 5px;font-size: 15px;font-weight: 500;line-height: 18.15px;text-align: left;
+                }
+                .date-container {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px; /* Adjust spacing between inputs */
+                }
+
+                .date-container input,
+                .date-container select {
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 14px;
+                }
+
+                .date-container input {
+                    width: 60px; /* Adjust width for day input */
+                }
+
+                .date-container select {
+                    width: auto; /* Adjusts width based on content */
+                }
+                .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 6px; /* Adjust spacing between radio options */
+        }
+
+        /* Hide the default radio button */
+        .radio-group input[type="radio"] {
+            appearance: none; /* For modern browsers */
+            -webkit-appearance: none; /* For Safari */
+            -moz-appearance: none; /* For Firefox */
+            width: 20px;
+            height: 20px;
+            border: 2px solid #8012c1; /* Border color */
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            margin-right: 5px;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* When the radio button is checked */
+        .radio-group input[type="radio"]:checked::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background-color: #8012c1; /* Inner circle color */
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Styling the label */
+        .radio-group label {
+            cursor: pointer;
+        }
+                option {
+                    color: #999;
+                }
+                .sub{
+                    margin-top: 15px;
+                    background: #5329C7;
+                    border: none;
+                    border-radius: 20px;
+                    padding: 10px 40px;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+                .curved-section {
+                  content: "";
+                  display: block;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                    background: linear-gradient(180deg, #5329C7 53.54%, #4C0783 100%);                   
+                    position: absolute;
+                    height: 600px; /* Adjust the height as needed */
+                    border-bottom-left-radius: 50% 20%;
+                    border-bottom-right-radius: 50% 20%;
+                }
+                .custom-list {
+                    list-style: none; /* Remove default bullets */
+                }
+
+                .custom-list li {
+                    position: relative;
+                    padding-left: 20px; /* Space for custom bullet */
+                    margin-bottom: 20px;
+                }
+
+                .custom-list li::before {
+                    content: "•"; /* Unicode character for bullet */
+                    font-size: 24px; /* Adjust size of the bullet */
+                    color: #ffffff; /* White color for the bullet */
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+    </style>
+</head>
+<body>
+   <section style="position:relative;">
+    <div class="curved-section"></div>
+    <div class="row">
+        <div class="col-md-7 col-sm-12">
+            <div class="space">
+                <h1 style="color: white;font-size: 34px;font-weight: 700;margin-bottom:30px;z-index: 99;
+  position: relative;">Lorem ipsum dolor sit amet,<br> consectetur </h1>
+                <ul class="custom-list"><li><div class="firstText">Lorem ipsum dolor sit amet</div><div class="secondText">You can use an Emoji for the circular bullet icon.</div></li></ul>
+                <ul class="custom-list"><li><div class="firstText">Lorem ipsum dolor sit amet</div><div class="secondText">Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</div></li></ul>
+                <ul class="custom-list"><li><div class="firstText">Lorem ipsum dolor sit amet</div><div class="secondText">Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.</div></li></ul>
+                <ul class="custom-list"><li><div class="firstText">Lorem ipsum dolor sit amet</div><div class="secondText">You can use an Emoji for the circular bullet icon.</div></li></ul>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-12">
+            <form  class="space space2" style="display: flex;padding: 50px;flex-direction: column;background-color: #f7f7f7;">
+                <h4 style="margin-top: 0px;margin-bottom: 10px;font-family: Inter;font-size: 24px;font-weight: 700;line-height: 29.05px;text-align: left;columns: black;">Lorem ipsum dolor</h4>
+                <label>Email*</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+                <span id="email-error" style="color: red;"></span>
+              
+                <label for="day">Preferred Demo Date*</label>
+                <div class="date-container">
+                    <input type="text" id="day" required placeholder="Date">
+                    <select id="month">
+                        <option value="">Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <!-- Add more month options -->
+                    </select>
+                    <select id="year">
+                        <option value="">Year</option>
+                        <option style="color: #999;" value="2024">2024</option>
+                        <option style="color: #999;" value="2025">2025</option>
+                        <!-- Add more year options -->
+                    </select>
+                </div>
+                <span id="date-error" style="color: red;"></span>
+
+              
+                <label>Your Department*</label>
+                <select id="department" required>
+                  <option value="">Choose from the list</option>
+                  <option value="Sales">Sales</option>
+                  <option value="Marketing">Marketing</option>
+                  <!-- Add more department options -->
+                </select>
+                <span id="department-error" style="color: red;"></span>
+              
+                <label>Which product would you like to take demo for?</label>
+                <textarea id="product" rows="4" required placeholder="Tell us more about your requirements..."></textarea>
+                <span id="product-error" style="color: red;"></span>
+              
+                <label>How did you hear about us?*</label>
+                <div class="radio-group">
+                    <input type="radio" id="social-media" name="hear-about-us" value="Social Media" required>
+                    <label style="margin-top: 0px;" for="social-media">Social Media</label>
+            
+                    <input type="radio" id="google-ads" name="hear-about-us" value="Google Ads" required>
+                    <label style="margin-top: 0px;" for="google-ads">Google Ads</label>
+                </div>
+                <span id="hear-about-us-error" style="color: red;"></span>
+              
+                <button class='sub'id="submit-btn">Request a Demo</button>
+              </form>
+        </div>
+    </div>
+  
+  </section>
+
+  <section class="space" style="position:relative;">
+    <div class="">
+        <h2 class="" style="font-family: Inter;font-size: 40px;margin-bottom: 20px;background: linear-gradient(89.95deg, #5776CC 0.01%, #9830CC 24.84%, #4C0783 47.29%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Lorem ipsum dolor sit amet</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="card" style="position: relative;">
+                <img src="/Users/rachabharadwaj/Todo-List-React-Project2-master/src/Frame 420.png" style="width: 100%; height: 100%;">
+                <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;border-radius: 15px ;background-color: transparent; transition: background-color 0.3s;"></div>
+                <div class="card-text" style="position: absolute; bottom: 0; left: 0; width: fit-content; text-align: center; margin: 10px 20px 10px 20px;">
+                    <div class="cardFirstText">Default state</div>
+                    <div class="cardSecondText">This is default state of the card, use an image as <img> tag and add gradient overlay and text over it.</div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="card" style="position: relative;">
+                <img src="/Users/rachabharadwaj/Todo-List-React-Project2-master/src/Frame 420.png" style="width: 100%; height: 100%;">
+                <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;border-radius: 15px ;background-color: transparent; transition: background-color 0.3s;"></div>
+                <div class="card-text" style="position: absolute; bottom: 0; left: 0; width: fit-content; text-align: center; margin: 10px 20px 10px 20px;">
+                    <div class="cardFirstText">Default state</div>
+                    <div class="cardSecondText">This is default state of the card, use an image as <img> tag and add gradient overlay and text over it.</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+      var form = document.querySelector("form");
+      var submitBtn = document.getElementById("submit-btn");
+    
+      submitBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        validateForm();
+      });
+    
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var day = document.getElementById("day").value;
+        var month = document.getElementById("month").value;
+        var year = document.getElementById("year").value;
+        var department = document.getElementById("department").value;
+        var product = document.getElementById("product").value;
+        var hearAboutUs = document.querySelector('input[name="hear-about-us"]:checked');
+    
+        if (!email) {
+          document.getElementById("email-error").innerText = "Please add valid email address";
+          document.getElementById("email").style.border = "1px solid red";
+        } else {
+          document.getElementById("email-error").innerText = "";
+          document.getElementById("email").style.border = "";
+        }
+    
+        if (!day || !month || !year) {
+          document.getElementById("date-error").innerText = "Please enter valid date";
+          document.getElementById("day").style.border = "1px solid red";
+          document.getElementById("month").style.border = "1px solid red";
+          document.getElementById("year").style.border = "1px solid red";
+        } else {
+          document.getElementById("date-error").innerText = "";
+          document.getElementById("day").style.border = "";
+          document.getElementById("month").style.border = "";
+          document.getElementById("year").style.border = "";
+        }
+    
+        if (!department) {
+          document.getElementById("department-error").innerText = "Please select a field";
+          document.getElementById("department").style.border = "1px solid red";
+        } else {
+          document.getElementById("department-error").innerText = "";
+          document.getElementById("department").style.border = "";
+        }
+    
+        if (!product) {
+          document.getElementById("product-error").innerText = "Please enter a product";
+          document.getElementById("product").style.border = "1px solid red";
+        } else {
+          document.getElementById("product-error").innerText = "";
+          document.getElementById("product").style.border = "";
+        }
+    
+        if (!hearAboutUs) {
+          document.getElementById("hear-about-us-error").innerText = "Please select an option";
+          document.querySelectorAll('input[name="hear-about-us"]').forEach(function (radio) {
+            radio.style.border = "1px solid red";
+          });
+        } else {
+          document.getElementById("hear-about-us-error").innerText = "";
+          document.querySelectorAll('input[name="hear-about-us"]').forEach(function (radio) {
+            radio.style.border = "";
+          });
+        }
+    
+        if (email && day && month && year && department && product && hearAboutUs) {
+          form.submit();
+        }
+      }
+    
+      document.getElementById("email").addEventListener("input", function () {
+        if (this.value) {
+          document.getElementById("email-error").innerText = "";
+          document.getElementById("email").style.border = "";
+        }
+      });
+    
+      document.getElementById("day").addEventListener("input", function () {
+        if (this.value && document.getElementById("month").value && document.getElementById("year").value) {
+          document.getElementById("date-error").innerText = "";
+          document.getElementById("day").style.border = "";
+          document.getElementById("month").style.border = "";
+          document.getElementById("year").style.border = "";
+        }
+      });
+    
+      document.getElementById("department").addEventListener("input", function () {
+        if (this.value) {
+          document.getElementById("department-error").innerText = "";
+          document.getElementById("department").style.border = "";
+        }
+      });
+    
+      document.getElementById("product").addEventListener("input", function () {
+        if (this.value) {
+          document.getElementById("product-error").innerText = "";
+          document.getElementById("product").style.border = "";
+        }
+      });
+    
+      document.querySelectorAll('input[name="hear-about-us"]').forEach(function (radio) {
+        radio.addEventListener("input", function () {
+          if (document.querySelector('input[name="hear-about-us"]:checked')) {
+            document.getElementById("hear-about-us-error").innerText = "";
+            document.querySelectorAll('input[name="hear-about-us"]').forEach(function (radio) {
+              radio.style.border = "";
+            });
+          }
+        });
+      });
+    });
+      </script>
+</body>
+</html>
